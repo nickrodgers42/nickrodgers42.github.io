@@ -1,0 +1,19 @@
+body {
+    background-color: #90c2e7;
+    font-family: 'PT Sans', sans-serif;
+}
+.header, .main-content {
+    background-color: #d1d5de;
+    margin: 20px 15%;
+    padding: 20px 5% 20px 5%;
+}
+.header {
+    box-shadow: 0 5px 30px black;
+}
+.main-content {
+    box-shadow: 0 5px 15px black;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+}
