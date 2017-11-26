@@ -22,7 +22,7 @@ p {
 .parallax {
     z-index: -1;
     position: fixed;
-    background: url("images/trees.png") repeat-x;
+    background: url("images/trees2.png") repeat-x;
     background-attachment: fixed;
     background-size: 300px auto;
     background-position: bottom center;
