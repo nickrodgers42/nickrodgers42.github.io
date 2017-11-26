@@ -1,11 +1,13 @@
 body {
-    background-color: #90c2e7;
+    background: #90c2e7 url("images/test6.png") repeat left top;
+    background-size: 800px;
     font-family: 'PT Sans', sans-serif;
 }
 .header, .main-content {
-    background-color: #d1d5de;
+    background-color: rgba(209, 213, 222, 0.9);
     margin: 20px 15%;
     padding: 20px 5% 20px 5%;
+    position: static;
 }
 .header {
     box-shadow: 0 5px 30px black;
@@ -16,4 +18,14 @@ body {
 
 p {
     font-family: 'Lato', sans-serif;
+}
+.parallax {
+    z-index: -1;
+    position: fixed;
+    background: url("images/trees.png") repeat-x;
+    background-attachment: fixed;
+    background-size: 300px auto;
+    background-position: bottom center;
+    height: 100%;
+    width: 100%;
 }
