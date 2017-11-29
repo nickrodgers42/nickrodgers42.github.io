@@ -1,5 +1,9 @@
+/* * {
+    margin: 0;
+    border: 1px black solid;
+} */
 body {
-    background: #90c2e7 url("images/test6.png") repeat left top;
+    background: #90c2e7 url("images/clouds.png") repeat left top;
     background-size: 800px;
     font-family: 'PT Sans', sans-serif;
 }
@@ -16,9 +20,18 @@ body {
     box-shadow: 0 5px 15px black;
 }
 
+.slideshow {
+    width: 50%;
+    margin: auto;
+}
+.slideshow img {
+    width: 100%;
+}
+
 p {
     font-family: 'Lato', sans-serif;
 }
+
 .parallax {
     z-index: -1;
     position: fixed;
