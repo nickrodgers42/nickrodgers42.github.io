@@ -23,11 +23,15 @@ $(document).ready(function() {
     }
     
     var rainDrops = [];
+    var colors = ["255, 0, 25", "255, 170, 0", "255, 225, 0", "38, 255, 0", "0, 208, 255", "187, 0, 255"];
 
-    function rainDrop(x, y, opacity) {
+    function rainDrop(x, y, opacity, rgbColorValues, size, horizontalDrift) {
         this.x = x;
         this.y = y;
         this.opacity = opacity;
+        this.rgbColorValues = rgbColorValues;
+        this.size = size;
+        this.horizontalDrift = horizontalDrift;
         this.nextDrawn = false;
         this.counter = 0;
     }
@@ -38,14 +42,15 @@ $(document).ready(function() {
 
     function drawRainDrop(currentDrop, index) {
         console.log(currentDrop);
-        ctx.fillStyle = "rgba(0,0,0," + currentDrop.opacity +")";
         ctx.beginPath();
-        ctx.fillRect(currentDrop.x, currentDrop.y, 5, 5);
+        ctx.fillStyle = "rgba(" + currentDrop.rgbColorValues + "," + currentDrop.opacity +")";
+        ctx.fillRect(currentDrop.x, currentDrop.y, currentDrop.size, currentDrop.size);
         currentDrop.opacity -= 0.1;
         if (!currentDrop.nextDrawn) {
             currentDrop.counter++;
             if (currentDrop.counter == 2 && currentDrop.y < myCanvas.height) {
-                rainDrops.push(new rainDrop(currentDrop.x, currentDrop.y + 10, 1));
+                rainDrops.push(new rainDrop(currentDrop.x + currentDrop.horizontalDrift, currentDrop.y + currentDrop.size + currentDrop.horizontalDrift, 1, currentDrop.rgbColorValues, 
+                    currentDrop.size, currentDrop.horizontalDrift));
                 currentDrop.nextDrawn = true;
             }
         }
@@ -58,13 +63,16 @@ $(document).ready(function() {
     function draw () {
         ctx.beginPath();
         ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
         circleDrawn = false;
         ctx.closePath();
         timer1++;
-        if (timer1 == 5) {
-            rainDrops.push(new rainDrop(Math.floor(Math.random() * 500), 0, 1));
+        if (timer1 == 3) {
+            rainDrops.push(new rainDrop(Math.floor(Math.random() * 800) - 300, 0, 1, colors[Math.floor(Math.random() * 6)],
+                            Math.floor(Math.random() * 8 + 1), Math.random() * 3));
         }
-        timer1 %= 5;
+        timer1 %= 3;
         drawRain();
     }
 
