@@ -41,7 +41,7 @@ $(document).ready(function() {
     }
 
     function drawRainDrop(currentDrop, index) {
-        console.log(currentDrop);
+        // console.log(currentDrop);
         ctx.beginPath();
         ctx.fillStyle = "rgba(" + currentDrop.rgbColorValues + "," + currentDrop.opacity +")";
         ctx.fillRect(currentDrop.x, currentDrop.y, currentDrop.size, currentDrop.size);
