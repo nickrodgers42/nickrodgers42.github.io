@@ -1,7 +1,7 @@
-/* * {
-    margin: 0;
-    border: 1px black solid;
-} */
+* {
+    /* margin: 0; */
+    /* border: 1px black solid; */
+}
 body {
     background: #90c2e7 url("images/clouds.png") repeat left top;
     background-size: 800px;
@@ -13,14 +13,27 @@ body {
     margin: auto;
 }
 
-.header, .main-content {
+header, .main-content {
     background-color: rgba(209, 213, 222, 0.9);
     margin: 20px 15%;
     padding: 20px 5% 20px 5%;
     position: static;
 }
-.header {
+header {
     box-shadow: 0 5px 30px black;
+}
+
+header ul li {
+    display: block;
+    float: left;
+    padding: 0 10px;
+    margin: 0 auto;
+    border-right: 1px solid black;
+}
+header ul {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
 }
 .main-content {
     box-shadow: 0 5px 15px black;

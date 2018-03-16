@@ -74,6 +74,7 @@ $(document).ready(function() {
         }
         timer1 %= 3;
         drawRain();
+        // console.log(rainDrops.length);
     }
 
     var drawInterval = setInterval(draw, 30);
