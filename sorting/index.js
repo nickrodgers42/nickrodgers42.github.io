@@ -1,22 +1,30 @@
 $(document).ready(function() {
     var sortingCanvas = $("#sorting-canvas")[0];
+    var context = sortingCanvas.getContext("2d");
     sortingCanvas.height = $(window).height() * 0.8;
     sortingCanvas.width = sortingCanvas.height;
+
     $(window).resize(function () { 
         sortingCanvas.height = $(window).height() * 0.8;
         sortingCanvas.width = sortingCanvas.height;
     });
-    var context = sortingCanvas.getContext("2d");
+
     var sortButton = $("#sort-button")[0];
     var sorting = false;
+
+    var imageButton = $("#image-button")[0];
+
     var myArray = [];
     var color1 = new Color(255, 0, 0);
     var color2 = new Color(0,0, 255);
+
     for (var i = 0; i < 20; ++i) {
         myArray[i] = new MakeArray(20, color1, color2);
         shuffle(myArray[i]);
     }
+
     drawArr(myArray);
+
     sortButton.onclick = function() {
         console.log(sorting);
         if (!sorting) {
@@ -24,7 +32,9 @@ $(document).ready(function() {
             sortArr(myArray, sorting);
         }
         else {
-            clearInterval(srtInterval);
+            if(typeof srtInterval != undefined) {
+                clearInterval(srtInterval);
+            }
             sorting = false;
             for (var i = 0; i < 20; ++i) {
                 myArray[i] = new MakeArray(20, color1, color2);
@@ -33,7 +43,43 @@ $(document).ready(function() {
             drawArr(myArray);
         }
     };
+    var imgLoaded = false;
+    imageButton.onclick = function() {
+        var img;
+        if (!imgLoaded) {
+            loadImg();
+            imgLoaded = true;
+        }
+        else if (!sorting) {
+            sorting = true;
+            sortImg(img);
+        }
+        else {
+            clearInterval(srtInterval);
+            sorting = false;
+        }
+    };
 });
+
+function loadImg() {
+    var canvas = $("#sorting-canvas")[0];
+    var canvas2 = document.createElement('canvas');
+    canvas2.width = canvas.width;
+    canvas2.height= canvas.height;
+    var context = canvas2.getContext("2d");
+    var img = new Image();
+    img.onload = function() {
+        // this.crossOrigin = "Anonymous";
+        img.src="../images/fried.jpg";
+        context.drawImage(img,0,0);
+        console.log("hello world");
+        console.log(context.getImageData(0,0,canvas.width,canvas.height));
+    }
+    console.log();
+}
+
+function sortImg(image) {
+}
 
 function shuffle(a) {
     for (var i = a.length - 1; i > 0; --i) {
